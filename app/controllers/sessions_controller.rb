@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  before_action :private_access, only: %i[destroy]
+  before_action :public_access, except: %i[destroy]
+  
   def new; end
 
   def create
