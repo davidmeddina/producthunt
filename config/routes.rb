@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  resources :products
+  resources :products do
+    resources :comments, only: %i[create]
+  end
   resources :users, only: %i[new create]
 end
