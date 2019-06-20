@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :private_access, except: %i[index show]
   
   def index
     @products = Product.all
