@@ -1,7 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 offset-sm-3">
+    <div class="col-sm-6 col-sm-offset-3">
       <h1>Crear Cuenta</h1>
+
+      <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
 
       <%= form_for @user do |f| %>
       <div class="form-group">
@@ -17,7 +27,7 @@
       </div>
 
       <div class="input-group input-group-lg">
-        <span class="input-group-text" id="basic-addon1">@</span>
+        <span class="input-group" id="basic-addon1">@</span>
         <%= f.text_field :twitter_handle, class: "form-control input-lg", placeholder: "Twitter" %>
       </div>
 
